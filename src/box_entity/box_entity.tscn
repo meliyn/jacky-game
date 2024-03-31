@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ydnmtn6hh3d"]
+
+[ext_resource type="Script" path="res://src/box_entity/box_entity.gd" id="1_6jybx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ump1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbgg1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Box" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_6jybx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ump1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_rbgg1")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
