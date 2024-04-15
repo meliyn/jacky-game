@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvn46gyjiu2r"]
+[gd_scene load_steps=3 format=3 uid="uid://bvn46gyjiu2r"]
 
-[ext_resource type="Script" path="res://src/ui/info_container.gd" id="1_pg6jm"]
+[ext_resource type="Script" path="res://src/ui/drop_off/drop_off_ui.gd" id="1_1bqxg"]
+[ext_resource type="Script" path="res://src/ui/drop_off/info_container.gd" id="1_pg6jm"]
 
 [node name="DropOffUI" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
+script = ExtResource("1_1bqxg")
 
 [node name="ItemList" type="ItemList" parent="."]
 custom_minimum_size = Vector2(100, 0)
