@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://8uyb67pbkywn"]
+
+[ext_resource type="Script" path="res://src/title/title.gd" id="1_bgyae"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bgyae")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MultiplayerJoinButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="MultiplayerHostButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[connection signal="pressed" from="VBoxContainer/MultiplayerJoinButton" to="." method="_on_multiplayer_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MultiplayerHostButton" to="." method="_on_multiplayer_host_button_pressed"]

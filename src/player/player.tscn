@@ -1,21 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh8em771018r5"]
+[gd_scene load_steps=5 format=3 uid="uid://x7mblxn87dgr"]
 
-[ext_resource type="Script" path="res://src/player/player.gd" id="1_4l302"]
+[ext_resource type="Texture2D" uid="uid://ca3texb18qqjc" path="res://icon.png" id="1_5udlp"]
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_otja0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53mu4"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr032"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_urh56"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6i73n"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
-[node name="Player" type="CharacterBody3D"]
-collision_layer = 2
-script = ExtResource("1_4l302")
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_otja0")
 
-[node name="Body" type="CSGBox3D" parent="."]
-material = SubResource("StandardMaterial3D_53mu4")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5udlp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_urh56")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fr032")
 
-[node name="DirectionIndicator" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.71013)
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6i73n")
