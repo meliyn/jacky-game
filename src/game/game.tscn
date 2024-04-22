@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5hplic1pw84l"]
 
-[ext_resource type="PackedScene" uid="uid://x7mblxn87dgr" path="res://src/player/player.tscn" id="1_vlq2n"]
+[ext_resource type="Script" path="res://src/game/game.gd" id="1_4rwm7"]
 
 [sub_resource type="TileSet" id="TileSet_7kmkh"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_4rwm7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -12,8 +13,6 @@
 tile_set = SubResource("TileSet_7kmkh")
 format = 2
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_vlq2n")]
-position = Vector2(5, 13)
-
-[node name="CharacterBody2D2" parent="." instance=ExtResource("1_vlq2n")]
-position = Vector2(405, 15)
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://src/player/player.tscn")
+spawn_path = NodePath("..")

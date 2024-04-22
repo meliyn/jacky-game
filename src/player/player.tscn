@@ -4,19 +4,22 @@
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_otja0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fr032"]
+size = Vector2(126, 129)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6i73n"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 2
+properties/0/replication_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_otja0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5udlp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_fr032")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

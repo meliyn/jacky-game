@@ -7,3 +7,7 @@
 script = ExtResource("1_gs4pf")
 
 [node name="Title" parent="." instance=ExtResource("2_iityd")]
+
+[node name="GameSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://src/game/game.tscn")
+spawn_path = NodePath("..")

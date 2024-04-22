@@ -6,7 +6,7 @@ static var instance: Main = null
 func _ready() -> void:
 	instance = self
 
-	# multiplayer.peer_connected.connect(_on_player_connected)
+	multiplayer.peer_connected.connect(_on_peer_connected)
 	# multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connection_success)
 	multiplayer.connection_failed.connect(_on_connection_fail)
@@ -43,3 +43,9 @@ func _on_connection_fail() -> void:
 
 func _on_disconnected() -> void:
 	print("Disconnected from server.")
+
+func _on_peer_connected(id: int) -> void:
+	print("Peer connected: ", id)
+	if multiplayer.is_server():
+		print("Spawning player: ", id)
+		Game.instance.spawn_player(id)
